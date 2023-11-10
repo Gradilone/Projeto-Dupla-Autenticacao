@@ -1,0 +1,11 @@
+*{
+    margin: 0 ;
+
+}
+form{
+    margin: 0 auto;
+}
+label {
+    display: block;
+    margin: 10px;
+}
