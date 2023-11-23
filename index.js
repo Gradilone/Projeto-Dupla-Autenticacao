@@ -1,18 +1,45 @@
-const fname = document.getElementById('email');
-const lname = document.getElementById('nome');
-const submit = document.getElementsByClassName("form-contact")[0];
+function sendOTP(){
+const email = document.getElementById('email');
+const submit = document.getElementById('submit');
+const otpverify = document.getElementsByClassName('otpverify')[0];
+let otp_val = Math.floor(Math.random()*10000);
 
-submit.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    console.log("Clicou");
+let emailbody = `
+<h1>Senha de verificacao</h1> <br>
+<h2>A sua senha de verificacao é </h2>${otp_val}
+`;
+submit.style.display = "none";
 
     Email.send({
-        SecureToken : "b4ec64d9-7642-42fa-911d-d03a1db57dce",
-        To : 'lucas.valias@fatec.sp.gov.br',
-        From : "lucas.valias@fatec.sp.gov.br",
-        Subject : "Teste",
-        Body : "Meu primeiro teste"
+        SecureToken : "2d27afdc-d513-40bf-881e-5a5f8ee65618",
+        To : email.value,
+        From : "lucasgradilone@outlook.com",
+        Subject : "Autenticaçao",
+        Body : emailbody
     }).then(
-      message => alert(message)
+      message => {
+        if(message === "OK"){
+            alert("Código enviado para: "+email.value);
+
+            otpverify.style.display = "block";
+            const otp_inp = document.getElementById('otp_inp');
+            const otp_btn = document.getElementById('otp-btn');
+           
+
+            otp_btn.addEventListener('click',()=>{
+                
+                if(otp_inp.value == otp_val){
+                    alert("Código válido!!");
+
+                }
+                else{
+                    alert("Código invalido, envie novamente");
+                    submit.style.display = "block";
+                    
+                }
+            })
+        }
+      }
     );
-});
+
+}

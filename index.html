@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
@@ -25,7 +25,7 @@
                 <h1>Insira seus dados</h1>
             </div>
 
-            <form action="#" class="form-contact">
+            <div class="form-contact">
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome" required>
 
@@ -35,13 +35,19 @@
                 <label for="senha">Senha:</label>
                 <input type="password" name="senha" id="senha">
 
-                <input class="botao" type="submit" name="envia" id="submit" value="Fazer login">
+                <div class="otpverify">
+                    <label for="senha">Código de verificação:</label>
+                    <input type="text" id="otp_inp"  placeholder="Insira o código de verificação">
+                    <button class="botao" id="otp-btn">Verificar</button>
+                </div>
 
-            </form>
+                <input onclick="sendOTP()" class="botao" type="submit" name="envia" id="submit" value="Fazer login">
+
+            </div>
         </section>
     </main>
 
-    <script src="./index.js"></script>
+    <script src="./index.js" defer></script>
 </body>
 
 </html>
